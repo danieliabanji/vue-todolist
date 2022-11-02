@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
@@ -15,19 +16,19 @@
 <body>
     <div id="app">
 
-        <div class="card container mt-5">
+        <div class="card text-center my_contiainer mt-5 my_shadow ">
             <div class="card-body">
                 <h1 class="text-uppercase">to do list</h1>
-                <form @submit.prevent="addTodo">
+                <form @submit.prevent="addTodo" class="mt-4">
                     <input v-model="newTodo">
-                    <button>Add Todo</button> 
-                    <div v-if="hasError">Il task deve essere di almeno 5 caratteri</div>
+                    <button class="my_btn mx-2">Add Todo</button> 
+                    <div v-if="hasError" class="text-danger">Il task deve essere di almeno 5 caratteri</div>
                 </form>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush mt-4">
                     <li v-for="(todo,index) in todos" :key="todo.id" :class="{ done: todo.done }"
-                        @click="toggle(index)">
+                        @click="toggle(index)" class="box mt-1 fs-4">
                         {{ todo.text }}
-                        <button @click="removeTodo(todo)" class="btn">X</button>
+                        <button @click.stop="removeTodo(todo)" class="btn"><i class="fa-solid fa-trash"></i></button>
                     </li>
                 </ul>
 
